@@ -1919,9 +1919,9 @@
   integrity sha512-z0zMCjyhhp4y7XKAcDAi3Vgms4T2PstwBdahiO0+9NaGICQKjynK3wduSRplTgk4LXmoO1yfDGO5RbjKYxtuxA==
 
 "@openzeppelin/contracts@^4.8.0":
-  version "4.8.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.8.0-rc.0.tgz#e126ec6d31f5112a8220b4b9aa32d9afb165970b"
-  integrity sha512-CRjUVfeawpt/UK5O78bha6cZ4yX/MVje5L9bRdCN5NEvOj1362vfnuUtcSjGG/GPEP59DgsCWbV6CJdwxSJL5Q==
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.8.0.tgz#6854c37df205dd2c056bdfa1b853f5d732109109"
+  integrity sha512-AGuwhRRL+NaKx73WKRNzeCxOCOCxpaqF+kp8TJ89QzAipSwZy/NoflkWaL9bywXFRhIzXt8j38sfF7KBKCPWLw==
 
 "@resolver-engine/core@^0.3.3":
   version "0.3.3"

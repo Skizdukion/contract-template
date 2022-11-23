@@ -28,7 +28,7 @@ contract BGOFStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
 
   bool public paused = false;
 
-  bool isRestake = true;
+  bool public isRestake = true;
 
   mapping(uint256 => uint256[]) public lockups;
 
@@ -49,8 +49,11 @@ contract BGOFStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
     stakeToken = IERC20(oldBgof.stakeToken());
     rewardToken = IERC20(oldBgof.rewardToken());
 
-    accountReward = oldBgof.accountReward();
-    accountStake = oldBgof.accountStake();
+    // accountReward = oldBgof.accountReward();
+    // accountStake = oldBgof.accountStake();
+
+    accountReward = 0xE3D9E6c5D5a70Fd96DF18362b5bC80BEe98Bc7e4;
+    accountStake = 0xE3D9E6c5D5a70Fd96DF18362b5bC80BEe98Bc7e4;
 
     packages[1] = oldBgof.packages(1);
     lockups[1] = oldBgof.getLockups(1);
@@ -90,6 +93,42 @@ contract BGOFStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
 
   function pause() public onlyOwner {
     paused = true;
+  }
+
+  // @todo turn on when mainnet
+  function sync(address oldBGOFStaking) public {
+    IBGOFStakingOld oldBgof = IBGOFStakingOld(oldBGOFStaking);
+
+    stakeToken = IERC20(oldBgof.stakeToken());
+    rewardToken = IERC20(oldBgof.rewardToken());
+
+    accountReward = oldBgof.accountReward();
+    accountStake = oldBgof.accountStake();
+
+    packages[1] = oldBgof.packages(1);
+    lockups[1] = oldBgof.getLockups(1);
+
+    packages[2] = oldBgof.packages(2);
+    lockups[2] = oldBgof.getLockups(2);
+
+    packages[3] = oldBgof.packages(3);
+    lockups[3] = oldBgof.getLockups(3);
+
+    packageId = 4;
+
+    uint256 profileLength = oldBgof.getProfilesLength();
+
+    profileId = profileLength;
+
+    for (uint256 i = 0; i < profileLength; i++) {
+      IBGOFStakingOld.UserInfo memory _data = oldBgof.userInfo(i);
+      userInfo.push(_data);
+    }
+
+    totalClaimedProfit = oldBgof.totalClaimedProfit();
+    totalProfit = oldBgof.totalProfit();
+    totalStaking = oldBgof.totalStaking();
+    totalClaimedStaking = oldBgof.totalClaimedStaking();
   }
 
   function setReskate(bool _isRestake) public onlyOwner {
