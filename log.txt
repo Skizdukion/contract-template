@@ -1,0 +1,266 @@
+yarn run v1.22.15
+$ C:\Users\Admin\blockchain\migrate_bgof\node_modules\.bin\hardhat run scripts/fetch_profile.ts --network bscTestnet
+No need to generate any newer typings.
+BGOF DATA
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+[
+  BigNumber { _hex: '0x20', _isBigNumber: true },
+  '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  BigNumber { _hex: '0x056bc75e2d63100000', _isBigNumber: true },
+  BigNumber { _hex: '0x2b042f2ea8f948', _isBigNumber: true },
+  BigNumber { _hex: '0x00', _isBigNumber: true },
+  BigNumber { _hex: '0x63771201', _isBigNumber: true },
+  BigNumber { _hex: '0x6551ae01', _isBigNumber: true },
+  BigNumber { _hex: '0x029a2241af62c00000', _isBigNumber: true },
+  BigNumber { _hex: '0x03', _isBigNumber: true },
+  false,
+  id: BigNumber { _hex: '0x20', _isBigNumber: true },
+  user: '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  amount: BigNumber { _hex: '0x056bc75e2d63100000', _isBigNumber: true },
+  profitClaimed: BigNumber { _hex: '0x2b042f2ea8f948', _isBigNumber: true },
+  stakeClaimed: BigNumber { _hex: '0x00', _isBigNumber: true },
+  vestingStart: BigNumber { _hex: '0x63771201', _isBigNumber: true },
+  vestingEnd: BigNumber { _hex: '0x6551ae01', _isBigNumber: true },
+  totalProfit: BigNumber { _hex: '0x029a2241af62c00000', _isBigNumber: true },
+  packageId: BigNumber { _hex: '0x03', _isBigNumber: true },
+  refunded: false
+]
+33
+34
+35
+36
+37
+38
+[
+  BigNumber { _hex: '0x26', _isBigNumber: true },
+  '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  BigNumber { _hex: '0x5fec5b60ef8000', _isBigNumber: true },
+  BigNumber { _hex: '0x00', _isBigNumber: true },
+  BigNumber { _hex: '0x00', _isBigNumber: true },
+  BigNumber { _hex: '0x6377308f', _isBigNumber: true },
+  BigNumber { _hex: '0x6551cc8f', _isBigNumber: true },
+  BigNumber { _hex: '0x2e0b0d244a0000', _isBigNumber: true },
+  BigNumber { _hex: '0x03', _isBigNumber: true },
+  false,
+  id: BigNumber { _hex: '0x26', _isBigNumber: true },
+  user: '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  amount: BigNumber { _hex: '0x5fec5b60ef8000', _isBigNumber: true },
+  profitClaimed: BigNumber { _hex: '0x00', _isBigNumber: true },
+  stakeClaimed: BigNumber { _hex: '0x00', _isBigNumber: true },
+  vestingStart: BigNumber { _hex: '0x6377308f', _isBigNumber: true },
+  vestingEnd: BigNumber { _hex: '0x6551cc8f', _isBigNumber: true },
+  totalProfit: BigNumber { _hex: '0x2e0b0d244a0000', _isBigNumber: true },
+  packageId: BigNumber { _hex: '0x03', _isBigNumber: true },
+  refunded: false
+]
+39
+40
+41
+BGFT DATA
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+[
+  BigNumber { _hex: '0x3a', _isBigNumber: true },
+  '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  BigNumber { _hex: '0x056bc75e2d63100000', _isBigNumber: true },
+  BigNumber { _hex: '0xa688906bd8b00000', _isBigNumber: true },
+  BigNumber { _hex: '0x056bc75e2d63100000', _isBigNumber: true },
+  BigNumber { _hex: '0x63770ed4', _isBigNumber: true },
+  BigNumber { _hex: '0x63771ce4', _isBigNumber: true },
+  BigNumber { _hex: '0xa688906bd8b00000', _isBigNumber: true },
+  BigNumber { _hex: '0x01', _isBigNumber: true },
+  false,
+  id: BigNumber { _hex: '0x3a', _isBigNumber: true },
+  user: '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  amount: BigNumber { _hex: '0x056bc75e2d63100000', _isBigNumber: true },
+  profitClaimed: BigNumber { _hex: '0xa688906bd8b00000', _isBigNumber: true },
+  stakeClaimed: BigNumber { _hex: '0x056bc75e2d63100000', _isBigNumber: true },
+  vestingStart: BigNumber { _hex: '0x63770ed4', _isBigNumber: true },
+  vestingEnd: BigNumber { _hex: '0x63771ce4', _isBigNumber: true },
+  totalProfit: BigNumber { _hex: '0xa688906bd8b00000', _isBigNumber: true },
+  packageId: BigNumber { _hex: '0x01', _isBigNumber: true },
+  refunded: false
+]
+59
+[
+  BigNumber { _hex: '0x3b', _isBigNumber: true },
+  '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  BigNumber { _hex: '0x06046f37e5945c0000', _isBigNumber: true },
+  BigNumber { _hex: '0xb8da256d78340000', _isBigNumber: true },
+  BigNumber { _hex: '0x06046f37e5945c0000', _isBigNumber: true },
+  BigNumber { _hex: '0x63770f3d', _isBigNumber: true },
+  BigNumber { _hex: '0x63771d4d', _isBigNumber: true },
+  BigNumber { _hex: '0xb8da256d78340000', _isBigNumber: true },
+  BigNumber { _hex: '0x01', _isBigNumber: true },
+  false,
+  id: BigNumber { _hex: '0x3b', _isBigNumber: true },
+  user: '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  amount: BigNumber { _hex: '0x06046f37e5945c0000', _isBigNumber: true },
+  profitClaimed: BigNumber { _hex: '0xb8da256d78340000', _isBigNumber: true },
+  stakeClaimed: BigNumber { _hex: '0x06046f37e5945c0000', _isBigNumber: true },
+  vestingStart: BigNumber { _hex: '0x63770f3d', _isBigNumber: true },
+  vestingEnd: BigNumber { _hex: '0x63771d4d', _isBigNumber: true },
+  totalProfit: BigNumber { _hex: '0xb8da256d78340000', _isBigNumber: true },
+  packageId: BigNumber { _hex: '0x01', _isBigNumber: true },
+  refunded: false
+]
+60
+61
+[
+  BigNumber { _hex: '0x3d', _isBigNumber: true },
+  '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  BigNumber { _hex: '0x8ac7230489e80000', _isBigNumber: true },
+  BigNumber { _hex: '0x8a8e4b1a3d8000', _isBigNumber: true },
+  BigNumber { _hex: '0x00', _isBigNumber: true },
+  BigNumber { _hex: '0x6377302c', _isBigNumber: true },
+  BigNumber { _hex: '0x63774544', _isBigNumber: true },
+  BigNumber { _hex: '0x257853b1dd8e0000', _isBigNumber: true },
+  BigNumber { _hex: '0x02', _isBigNumber: true },
+  false,
+  id: BigNumber { _hex: '0x3d', _isBigNumber: true },
+  user: '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  amount: BigNumber { _hex: '0x8ac7230489e80000', _isBigNumber: true },
+  profitClaimed: BigNumber { _hex: '0x8a8e4b1a3d8000', _isBigNumber: true },
+  stakeClaimed: BigNumber { _hex: '0x00', _isBigNumber: true },
+  vestingStart: BigNumber { _hex: '0x6377302c', _isBigNumber: true },
+  vestingEnd: BigNumber { _hex: '0x63774544', _isBigNumber: true },
+  totalProfit: BigNumber { _hex: '0x257853b1dd8e0000', _isBigNumber: true },
+  packageId: BigNumber { _hex: '0x02', _isBigNumber: true },
+  refunded: false
+]
+62
+[
+  BigNumber { _hex: '0x3e', _isBigNumber: true },
+  '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  BigNumber { _hex: '0x8ac7230489e80000', _isBigNumber: true },
+  BigNumber { _hex: '0x00', _isBigNumber: true },
+  BigNumber { _hex: '0x00', _isBigNumber: true },
+  BigNumber { _hex: '0x63773047', _isBigNumber: true },
+  BigNumber { _hex: '0x63774c67', _isBigNumber: true },
+  BigNumber { _hex: '0x429d069189e00000', _isBigNumber: true },
+  BigNumber { _hex: '0x03', _isBigNumber: true },
+  false,
+  id: BigNumber { _hex: '0x3e', _isBigNumber: true },
+  user: '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  amount: BigNumber { _hex: '0x8ac7230489e80000', _isBigNumber: true },
+  profitClaimed: BigNumber { _hex: '0x00', _isBigNumber: true },
+  stakeClaimed: BigNumber { _hex: '0x00', _isBigNumber: true },
+  vestingStart: BigNumber { _hex: '0x63773047', _isBigNumber: true },
+  vestingEnd: BigNumber { _hex: '0x63774c67', _isBigNumber: true },
+  totalProfit: BigNumber { _hex: '0x429d069189e00000', _isBigNumber: true },
+  packageId: BigNumber { _hex: '0x03', _isBigNumber: true },
+  refunded: false
+]
+63
+[
+  BigNumber { _hex: '0x3f', _isBigNumber: true },
+  '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  BigNumber { _hex: '0x05f5e100', _isBigNumber: true },
+  BigNumber { _hex: '0x00', _isBigNumber: true },
+  BigNumber { _hex: '0x00', _isBigNumber: true },
+  BigNumber { _hex: '0x637ddaec', _isBigNumber: true },
+  BigNumber { _hex: '0x637de8fc', _isBigNumber: true },
+  BigNumber { _hex: '0xb71b00', _isBigNumber: true },
+  BigNumber { _hex: '0x01', _isBigNumber: true },
+  false,
+  id: BigNumber { _hex: '0x3f', _isBigNumber: true },
+  user: '0xB814C333FE721BA53828eCb70771bFb797cEA289',
+  amount: BigNumber { _hex: '0x05f5e100', _isBigNumber: true },
+  profitClaimed: BigNumber { _hex: '0x00', _isBigNumber: true },
+  stakeClaimed: BigNumber { _hex: '0x00', _isBigNumber: true },
+  vestingStart: BigNumber { _hex: '0x637ddaec', _isBigNumber: true },
+  vestingEnd: BigNumber { _hex: '0x637de8fc', _isBigNumber: true },
+  totalProfit: BigNumber { _hex: '0xb71b00', _isBigNumber: true },
+  packageId: BigNumber { _hex: '0x01', _isBigNumber: true },
+  refunded: false
+]
+Done in 34.97s.
