@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // OpenZeppelin Contracts (last updated v4.8.0-rc.1) (utils/Address.sol)
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.1;
 
 /**
  * @dev Collection of functions related to the address type
@@ -722,18 +722,18 @@ interface IBGOFStakingOld {
   function userInfo(uint256 input) external view returns (UserInfo memory);
 }
 
-// File contracts/BGFTStakingMigrate.sol
+// File contracts/FarmBFGTV2.sol
 
 interface IBGOFStaking {
-  function bgftStake(
+  function bfgtStake(
     address user,
     uint256 _amount,
     uint256 _packageId
   ) external;
 }
 
-contract BGFTStakingMigrate is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable {
-  string public name = "BGOF Staking";
+contract FarmBFGTV2 is Initializable, ReentrancyGuardUpgradeable, OwnableUpgradeable {
+  string public name = "Farm BFGT V2";
 
   uint256 profileId;
   uint256 packageId;
@@ -747,13 +747,13 @@ contract BGFTStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
   IERC20 public stakeToken;
   IERC20 public rewardToken;
   // @todo switch back to mainnet
+  // uint256 public PERIOD = 100;
   uint256 public PERIOD = 30 days;
-  // uint256 public PERIOD = 600;
   uint256 public rateReward = 100;
 
   bool public paused = false;
 
-  bool isRestake = true;
+  bool public isRestake = false;
 
   mapping(uint256 => uint256[]) public lockups;
 
@@ -765,44 +765,48 @@ contract BGFTStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
   event ClaimProfit(address by, uint256 amount);
   event ClaimStaking(address by, uint256 amount);
 
-  function initialize(address oldBGFTStaking, address _bgofStaking) public initializer {
+  function initialize(address oldBFGTStaking, address _bgofStaking) public initializer {
     __ReentrancyGuard_init();
     __Ownable_init();
 
     bgofStaking = _bgofStaking;
 
-    IBGOFStakingOld oldBgft = IBGOFStakingOld(oldBGFTStaking);
+    IBGOFStakingOld oldBfgt = IBGOFStakingOld(oldBFGTStaking);
 
-    stakeToken = IERC20(oldBgft.stakeToken());
-    rewardToken = IERC20(oldBgft.rewardToken());
+    stakeToken = IERC20(oldBfgt.stakeToken());
+    rewardToken = IERC20(oldBfgt.rewardToken());
 
-    accountReward = oldBgft.accountReward();
-    accountStake = oldBgft.accountStake();
+    // accountReward = oldBgft.accountReward();
+    // accountStake = oldBgft.accountStake();
 
-    packages[1] = oldBgft.packages(1);
-    lockups[1] = oldBgft.getLockups(1);
+    // @todo switch back when mainnet
+    accountReward = 0xE3D9E6c5D5a70Fd96DF18362b5bC80BEe98Bc7e4;
+    accountStake = 0xE3D9E6c5D5a70Fd96DF18362b5bC80BEe98Bc7e4;
 
-    packages[2] = oldBgft.packages(2);
-    lockups[2] = oldBgft.getLockups(2);
+    packages[1] = oldBfgt.packages(1);
+    lockups[1] = oldBfgt.getLockups(1);
 
-    packages[3] = oldBgft.packages(3);
-    lockups[3] = oldBgft.getLockups(3);
+    packages[2] = oldBfgt.packages(2);
+    lockups[2] = oldBfgt.getLockups(2);
+
+    packages[3] = oldBfgt.packages(3);
+    lockups[3] = oldBfgt.getLockups(3);
 
     packageId = 4;
 
-    uint256 profileLength = oldBgft.getProfilesLength();
+    uint256 profileLength = oldBfgt.getProfilesLength();
 
     profileId = profileLength;
 
     for (uint256 i = 0; i < profileLength; i++) {
-      IBGOFStakingOld.UserInfo memory _data = oldBgft.userInfo(i);
+      IBGOFStakingOld.UserInfo memory _data = oldBfgt.userInfo(i);
       userInfo.push(_data);
     }
 
-    totalClaimedProfit = oldBgft.totalClaimedProfit();
-    totalProfit = oldBgft.totalProfit();
-    totalStaking = oldBgft.totalStaking();
-    totalClaimedStaking = oldBgft.totalClaimedStaking();
+    totalClaimedProfit = oldBfgt.totalClaimedProfit();
+    totalProfit = oldBfgt.totalProfit();
+    totalStaking = oldBfgt.totalStaking();
+    totalClaimedStaking = oldBfgt.totalClaimedStaking();
   }
 
   modifier whenNotPaused() {
@@ -819,6 +823,10 @@ contract BGFTStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
     paused = true;
   }
 
+  function setPeriod(uint256 _period) public onlyOwner {
+    PERIOD = _period;
+  }
+
   function setReskate(bool _isRestake) public onlyOwner {
     isRestake = _isRestake;
   }
@@ -827,7 +835,6 @@ contract BGFTStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
     paused = false;
   }
 
-  // Add package
   function addPackage(
     uint256 _totalPercentProfit,
     uint256 _vestingTime,
@@ -901,29 +908,6 @@ contract BGFTStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
     stakeToken.transferFrom(msg.sender, accountStake, _amount);
 
     _stake(msg.sender, _amount, _packageId);
-
-    // uint256 profit = (_amount * packages[_packageId].totalPercentProfit) / 100;
-
-    // IBGOFStakingOld.UserInfo memory profile;
-    // profile.id = profileId;
-    // profile.packageId = _packageId;
-    // profile.user = msg.sender;
-    // profile.amount = _amount;
-    // profile.profitClaimed = 0;
-    // profile.stakeClaimed = 0;
-    // profile.vestingStart = block.timestamp;
-    // profile.vestingEnd = block.timestamp + packages[_packageId].vestingTime * PERIOD;
-    // profile.refunded = false;
-    // profile.totalProfit = profit;
-    // userInfo.push(profile);
-
-    // profileId++;
-
-    // totalStaking += _amount;
-
-    // totalProfit += profit;
-
-    // emit Deposit(msg.sender, _amount);
   }
 
   function _stake(
@@ -981,16 +965,16 @@ contract BGFTStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
     uint256 netReward = (remainProfit * rateReward) / 100;
 
     if (isRestake) {
-      IBGOFStaking(bgofStaking).bgftStake(msg.sender, netReward, 3);
+      IBGOFStaking(bgofStaking).bfgtStake(msg.sender, netReward, 3);
     } else {
       rewardToken.transferFrom(accountReward, msg.sender, netReward);
-      info.profitClaimed += remainProfit;
-
-      // Update total profit claimed
-      totalClaimedProfit += profit;
-
-      emit ClaimProfit(msg.sender, remainProfit);
     }
+    info.profitClaimed += remainProfit;
+
+    // Update total profit claimed
+    totalClaimedProfit += profit;
+
+    emit ClaimProfit(msg.sender, remainProfit);
   }
 
   function getCurrentStakeUnlock(uint256 _profileId) public view returns (uint256) {
@@ -1012,7 +996,6 @@ contract BGFTStakingMigrate is Initializable, ReentrancyGuardUpgradeable, Ownabl
     uint256 length = pkgLockups.length;
 
     for (uint256 i = length - 1; i >= 0; i--) {
-      // Index + 1 = amount of months
       uint256 limitWithdrawTime = info.vestingEnd + (i + 1) * PERIOD;
       if (block.timestamp > limitWithdrawTime) {
         return (pkgLockups[i] * info.amount) / 100;

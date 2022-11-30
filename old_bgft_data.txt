@@ -1,0 +1,2 @@
+yarn run v1.22.15
+$ C:\Users\Admin\blockchain\migrate_bgof\node_modules\.bin\hardhat run scripts/fetch_contract_staking_data.ts --network bsc

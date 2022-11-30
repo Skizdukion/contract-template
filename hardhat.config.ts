@@ -37,13 +37,13 @@ const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      forking: {
-        url: process.env.FORKING_NETWORK!,
-        // url: "https://bscrpc.com",
-        enabled: process.env.ENABLE_FORKING! === "true",
-        blockNumber: Number(process.env.FORKING_BLOCK!),
-      },
-      loggingEnabled: process.env.FORKING_LOG! === "true",
+      // forking: {
+      //   url: process.env.FORKING_NETWORK!,
+      //   // url: "https://bscrpc.com",
+      //   enabled: process.env.ENABLE_FORKING! === "true",
+      //   blockNumber: Number(process.env.FORKING_BLOCK!),
+      // },
+      // loggingEnabled: process.env.FORKING_LOG! === "true",
       chainId: 31337,
       // accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : undefined,
       allowUnlimitedContractSize: true,

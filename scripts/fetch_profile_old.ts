@@ -9,7 +9,7 @@ async function nft_total_supply_uri() {
     "FarmBGOFV2",
     "0xA64F1a44ea659F6d0aDD6d3Db387bA6D58bb262d"
   )
-  const bfgt: FarmBFGTV2 = await ethers.getContract("FarmBFGTV2")
+  // const bfgt: FarmBFGTV2 = await ethers.getContractAt("FarmBFGTV2", "0xB796ff98f3AF1C4c5D4BBd82338427adC16a7014")
 
   const bgofProfile = await bgof.getProfilesLength()
 

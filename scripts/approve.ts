@@ -2,15 +2,20 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers"
 import { assert, expect } from "chai"
 import { BigNumber, Signer } from "ethers"
 import { deployments, ethers, getNamedAccounts, network } from "hardhat"
-import { BGFTStakingMigrate, BGOFStaking, BGOFStakingMigrate, MockERC20 } from "../typechain"
+import { FarmBFGTV2, BGOFStaking, FarmBGOFV2, MockERC20 } from "../typechain"
 
 async function approve() {
-  const bgofStaking: BGOFStakingMigrate = await ethers.getContract("BGOFStakingMigrate")
-  const bgftStaking: BGFTStakingMigrate = await ethers.getContract("BGFTStakingMigrate")
+  const bgofStaking: FarmBGOFV2 = await ethers.getContract("FarmBGOFV2")
+  const bfgtStaking: FarmBFGTV2 = await ethers.getContract("FarmBFGTV2")
 
   const bgof: MockERC20 = await ethers.getContractAt(
     "MockERC20",
     "0xBf43a22b8F23dd8fc09a70f194f11F51fA906061"
+  )
+
+  const bfgt: MockERC20 = await ethers.getContractAt(
+    "MockERC20",
+    "0x6999171fE1e531B89b0A4ef6d10158e8B4384d3C"
   )
 
   const bankWallet: Signer = new ethers.Wallet(
@@ -19,15 +24,26 @@ async function approve() {
   )
 
   const _bgof = await bgof.connect(bankWallet)
+  const _bfgt = await bfgt.connect(bankWallet)
 
   await _bgof.approve(
     bgofStaking.address,
-    ethers.utils.parseEther("2000000")
+    ethers.utils.parseEther("20000000000000000")
   )
 
   await _bgof.approve(
-    bgftStaking.address,
-    ethers.utils.parseEther("2000000")
+    bfgtStaking.address,
+    ethers.utils.parseEther("20000000000000000")
+  )
+
+  await _bfgt.approve(
+    bgofStaking.address,
+    ethers.utils.parseEther("20000000000000000")
+  )
+
+  await _bfgt.approve(
+    bfgtStaking.address,
+    ethers.utils.parseEther("20000000000000000")
   )
 }
 
