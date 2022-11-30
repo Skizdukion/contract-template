@@ -35,7 +35,10 @@ const deployFunction: DeployFunction = async () => {
     console.log(rc.gasUsed.toString())
     console.log("-----------------------------")
   }
-  
+
+  if (!developmentChains.includes(network.name) && process.env.BSCSCAN_API_KEY) {
+    await verify(farmV3.address, [])
+  }
 }
 
 const _data: any[] = [

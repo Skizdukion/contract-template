@@ -14,17 +14,18 @@ contract FarmBFGTV3 is ReentrancyGuard, Ownable {
 
   uint256 profileId;
   uint256 packageId = 4;
-  uint256 public totalStaking = 13367895000000000000000000;
+  uint256 public totalStaking = 0;
   uint256 public totalClaimedStaking = 0;
-  uint256 public totalProfit = 5939306190000000000000000;
-  uint256 public totalClaimedProfit = 1581938133971261574073998;
+  uint256 public totalProfit = 0;
+  uint256 public totalClaimedProfit = 0;
   address public accountReward;
   address public accountStake;
   address public bgofStaking;
   IERC20 public stakeToken;
   IERC20 public rewardToken;
 
-  uint256 public PERIOD = 100;
+  // @important mainnet
+  uint256 public PERIOD = 30 days;
   uint256 public rateReward = 100;
 
   bool public paused = false;
@@ -42,10 +43,17 @@ contract FarmBFGTV3 is ReentrancyGuard, Ownable {
   event ClaimStaking(address by, uint256 amount);
 
   constructor() {
+    // @important mainnet
     stakeToken = IERC20(0x382978cB7c29CaCde95dbBCe97C291156217A058);
     rewardToken = IERC20(0x5f949De3131f00B296Fc4c99058D40960B90FAbC);
+    // @important mainnet
     accountReward = 0xE3D9E6c5D5a70Fd96DF18362b5bC80BEe98Bc7e4;
     accountStake = 0xE3D9E6c5D5a70Fd96DF18362b5bC80BEe98Bc7e4;
+
+    totalClaimedProfit = 1716376767674965277777700;
+    totalProfit = 5939306190000000000000000;
+    totalStaking = 13367895000000000000000000;
+    totalClaimedStaking = 0;
     packages[1] = IBGOFStakingOld.Package(12, 6, true);
     lockups[1] = [5, 10, 25, 40, 65, 100];
     packages[2] = IBGOFStakingOld.Package(27, 9, true);
@@ -54,7 +62,7 @@ contract FarmBFGTV3 is ReentrancyGuard, Ownable {
     lockups[2] = [100];
   }
 
-  function migrate(IBGOFStakingOld.UserInfo[] memory _data) public {
+  function migrate(IBGOFStakingOld.UserInfo[] memory _data) public onlyOwner {
     require(profileId == _data[0].id, "Not migrating");
     for (uint i = 0; i < _data.length; i++) {
       userInfo.push(_data[i]);
